@@ -79,12 +79,15 @@ if (!images[imagePath])
         )
       }
 
-      <Section title='Newsletter'>
-        <p class='text-muted-foreground'>
-          Subscribe to get new posts delivered directly to your inbox.
-        </p>
+      <div class='rounded-xl border bg-muted/40 px-6 py-8 flex flex-col gap-y-4'>
+        <div class='flex flex-col gap-y-1'>
+          <h2 class='text-xl font-semibold'>Stay in the loop</h2>
+          <p class='text-muted-foreground text-sm'>
+            New posts on software engineering, data, and ML — delivered to your inbox. No spam, unsubscribe anytime.
+          </p>
+        </div>
         <Newsletter />
-      </Section>
+      </div>
     </div>
     <Quote class='mt-12' />
   </main>

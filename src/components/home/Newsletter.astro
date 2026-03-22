@@ -1,30 +1,58 @@
 ---
-// Beehiiv newsletter signup
-// Setup:
-//   1. Create an account at https://beehiiv.com
-//   2. Go to Settings → Embed → Copy your publication's embed URL
-//   3. Replace BEEHIIV_PUBLICATION_ID below with your publication ID (found in the embed URL)
-const BEEHIIV_PUBLICATION_ID = '' // e.g. 'pub_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-
-const enabled = BEEHIIV_PUBLICATION_ID !== ''
 ---
 
-{
-  enabled ? (
-    <iframe
-      src={`https://embeds.beehiiv.com/${BEEHIIV_PUBLICATION_ID}`}
-      data-test-id='beehiiv-embed'
-      width='100%'
-      height='320'
-      frameborder='0'
-      scrolling='no'
-      style='border-radius: 4px; border: 1px solid hsl(var(--border)); margin: 0; background-color: transparent;'
-    />
-  ) : (
-    <div class='rounded-lg border border-dashed p-4 text-sm text-muted-foreground'>
-      Newsletter signup not yet configured. Create an account at{' '}
-      <a href='https://beehiiv.com' target='_blank'>beehiiv.com</a> and fill in your publication ID
-      in <code>src/components/home/Newsletter.astro</code>.
-    </div>
-  )
-}
+<form id='newsletter-form' class='not-prose flex flex-col gap-3 sm:flex-row'>
+  <input
+    id='newsletter-email'
+    type='email'
+    placeholder='your@email.com'
+    required
+    class='flex-1 rounded-lg border bg-background px-4 py-2 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-primary'
+  />
+  <button
+    type='submit'
+    id='newsletter-btn'
+    class='rounded-lg bg-foreground px-5 py-2 text-sm font-medium text-background transition-opacity hover:opacity-80 disabled:opacity-50'
+  >
+    Subscribe
+  </button>
+</form>
+<p id='newsletter-msg' class='not-prose mt-2 hidden text-sm'></p>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement
+  const email = document.getElementById('newsletter-email') as HTMLInputElement
+  const btn = document.getElementById('newsletter-btn') as HTMLButtonElement
+  const msg = document.getElementById('newsletter-msg') as HTMLParagraphElement
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    btn.disabled = true
+    btn.textContent = 'Subscribing...'
+    msg.className = 'not-prose mt-2 hidden text-sm'
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.value })
+      })
+
+      if (res.ok) {
+        form.classList.add('hidden')
+        msg.textContent = "You're subscribed! Check your inbox for a confirmation email."
+        msg.className = 'not-prose mt-2 text-sm text-green-600'
+      } else {
+        msg.textContent = 'Something went wrong. Please try again.'
+        msg.className = 'not-prose mt-2 text-sm text-red-500'
+        btn.disabled = false
+        btn.textContent = 'Subscribe'
+      }
+    } catch {
+      msg.textContent = 'Something went wrong. Please try again.'
+      msg.className = 'not-prose mt-2 text-sm text-red-500'
+      btn.disabled = false
+      btn.textContent = 'Subscribe'
+    }
+  })
+</script>

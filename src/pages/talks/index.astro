@@ -1,0 +1,60 @@
+---
+import PageLayout from '@/layouts/CommonPage.astro'
+
+const headings = [
+  { depth: 2, slug: 'webinars', text: 'Webinars' },
+  { depth: 2, slug: 'conferences', text: 'Conferences' },
+  { depth: 2, slug: 'meetups', text: 'Meetups' }
+]
+---
+
+<PageLayout title='Talks and Webinars' {headings}>
+  <p>Recordings of talks, webinars, and conference presentations.</p>
+
+  <h2 id='webinars'>Webinars</h2>
+  <p>
+    <strong>Airflow at Faire: Democratizing Machine Learning at Scale</strong> —{' '}
+    <a href='https://www.astronomer.io/events/webinars/airflow-at-faire-democratizing-machine-learning-at-scale/'>
+      Astronomer Webinar
+    </a>
+  </p>
+  <div class='not-prose my-4'>
+    <iframe
+      src='https://fast.wistia.net/embed/iframe/o0wicupc72'
+      title='Airflow at Faire: Democratizing Machine Learning at Scale'
+      allow='autoplay; fullscreen'
+      allowtransparency='true'
+      frameborder='0'
+      scrolling='no'
+      class='w-full aspect-video'
+    ></iframe>
+  </div>
+
+  <h2 id='conferences'>Conferences</h2>
+  <p>
+    <strong>Democratizing ML feature store framework at Scale</strong> — Airflow Summit 2023
+  </p>
+  <div class='not-prose my-4'>
+    <iframe
+      src='https://www.youtube.com/embed/9MlQqKI3O1c'
+      frameborder='0'
+      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+      allowfullscreen
+      class='w-full aspect-video'
+    ></iframe>
+  </div>
+
+  <h2 id='meetups'>Meetups</h2>
+  <p>
+    <strong>Redshift to Snowflake migration at scale</strong> — Datafold Data Quality Meetup
+  </p>
+  <div class='not-prose my-4'>
+    <iframe
+      src='https://www.youtube.com/embed/deW6qIKo6kU?start=2334'
+      frameborder='0'
+      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+      allowfullscreen
+      class='w-full aspect-video'
+    ></iframe>
+  </div>
+</PageLayout>

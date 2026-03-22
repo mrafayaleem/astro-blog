@@ -1,0 +1,45 @@
+---
+// Giscus comment system
+// Setup:
+//   1. Enable GitHub Discussions on your repo (Settings → Features → Discussions)
+//   2. Visit https://giscus.app, configure, then copy repo, repoId, category, categoryId below
+import { cn } from 'astro-pure/utils'
+
+// --- Configure these values after running setup at https://giscus.app ---
+const GISCUS_REPO = 'mrafayaleem/astro-blog' // e.g. 'username/repo'
+const GISCUS_REPO_ID = '' // From giscus.app
+const GISCUS_CATEGORY = 'Announcements' // GitHub Discussions category name
+const GISCUS_CATEGORY_ID = '' // From giscus.app
+// -------------------------------------------------------------------------
+
+const enabled = GISCUS_REPO_ID !== '' && GISCUS_CATEGORY_ID !== ''
+
+const { class: className } = Astro.props
+---
+
+{
+  enabled ? (
+    <div class={cn('not-prose', className)}>
+      <script
+        src='https://giscus.app/client.js'
+        data-repo={GISCUS_REPO}
+        data-repo-id={GISCUS_REPO_ID}
+        data-category={GISCUS_CATEGORY}
+        data-category-id={GISCUS_CATEGORY_ID}
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='top'
+        data-theme='preferred_color_scheme'
+        data-lang='en'
+        crossorigin='anonymous'
+        async
+      />
+    </div>
+  ) : (
+    <div class={cn('not-prose rounded-lg border border-dashed p-4 text-sm text-muted-foreground', className)}>
+      Comments not yet configured. Visit <a href='https://giscus.app' target='_blank'>giscus.app</a> to set up and fill in the values in <code>src/components/waline/Comment.astro</code>.
+    </div>
+  )
+}

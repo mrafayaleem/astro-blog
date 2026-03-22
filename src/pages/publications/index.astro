@@ -1,0 +1,66 @@
+---
+import PageLayout from '@/layouts/CommonPage.astro'
+
+const headings = [
+  { depth: 2, slug: '2023', text: '2023' },
+  { depth: 2, slug: '2019', text: '2019' },
+  { depth: 2, slug: '2017', text: '2017' },
+  { depth: 2, slug: '2016', text: '2016' }
+]
+---
+
+<PageLayout title='Other Publications' {headings}>
+  <p>Articles and technical posts published on external platforms.</p>
+
+  <h2 id='2023'>2023</h2>
+  <ul>
+    <li>
+      <a href='https://craft.faire.com/the-great-migration-from-redshift-to-snowflake-173c1fb59a52'>
+        The great migration from Redshift to Snowflake
+      </a>{' '}
+      — Faire Engineering Blog
+    </li>
+  </ul>
+
+  <h2 id='2019'>2019</h2>
+  <ul>
+    <li>
+      <a href='https://medium.com/sfu-cspmp/predicting-stable-portfolios-using-machine-learning-f2e27d6dbbec'>
+        Predicting Stable Portfolios Using Machine Learning
+      </a>{' '}
+      — SFU Computer Science
+    </li>
+  </ul>
+
+  <h2 id='2017'>2017</h2>
+  <ul>
+    <li>
+      <a href='https://tech.olx.com/how-we-changed-our-payment-service-provider-over-an-a-b-test-via-haproxy-13f722dc0b86'>
+        How we changed our payment service provider over an A/B test via HAProxy
+      </a>{' '}
+      — OLX Engineering
+    </li>
+  </ul>
+
+  <h2 id='2016'>2016</h2>
+  <ul>
+    <li>
+      <a href='https://medium.com/uncanny-recursions/apache-kafka-producer-benchmarks-java-vs-jython-vs-python-a4bcb185c7f3'>
+        Apache Kafka Producer Benchmarks — Java vs. Jython vs. Python
+      </a>{' '}
+      — Uncanny Recursions
+    </li>
+    <li>
+      <a href='https://tech.olx.com/live-mysql-schema-changes-on-amazon-rds-with-percona-a-walkthrough-27e46222f1b4'>
+        Live MySQL Schema Changes on Amazon RDS with Percona — A Walkthrough
+      </a>{' '}
+      — OLX Engineering
+    </li>
+    <li>
+      <a href='https://medium.com/uncanny-recursions/interfacing-jython-with-kafka-0-8-x-2f4e1ce7d2e6'>
+        Interfacing Jython with Kafka 0.8.x
+      </a>{' '}
+      — Uncanny Recursions
+    </li>
+  </ul>
+</PageLayout>

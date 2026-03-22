@@ -1,0 +1,30 @@
+---
+// Beehiiv newsletter signup
+// Setup:
+//   1. Create an account at https://beehiiv.com
+//   2. Go to Settings → Embed → Copy your publication's embed URL
+//   3. Replace BEEHIIV_PUBLICATION_ID below with your publication ID (found in the embed URL)
+const BEEHIIV_PUBLICATION_ID = '' // e.g. 'pub_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+
+const enabled = BEEHIIV_PUBLICATION_ID !== ''
+---
+
+{
+  enabled ? (
+    <iframe
+      src={`https://embeds.beehiiv.com/${BEEHIIV_PUBLICATION_ID}`}
+      data-test-id='beehiiv-embed'
+      width='100%'
+      height='320'
+      frameborder='0'
+      scrolling='no'
+      style='border-radius: 4px; border: 1px solid hsl(var(--border)); margin: 0; background-color: transparent;'
+    />
+  ) : (
+    <div class='rounded-lg border border-dashed p-4 text-sm text-muted-foreground'>
+      Newsletter signup not yet configured. Create an account at{' '}
+      <a href='https://beehiiv.com' target='_blank'>beehiiv.com</a> and fill in your publication ID
+      in <code>src/components/home/Newsletter.astro</code>.
+    </div>
+  )
+}

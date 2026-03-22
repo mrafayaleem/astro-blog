@@ -1,0 +1,19 @@
+---
+import { cn } from 'astro-pure/utils'
+
+interface Props {
+  view?: boolean
+  comment?: boolean
+  class?: string
+}
+
+const { comment, class: className, ...props } = Astro.props
+---
+
+{
+  comment && (
+    <div class={cn('text-base text-sm text-muted-foreground', className)} {...props}>
+      <a href='#giscus'>Leave a comment</a>
+    </div>
+  )
+}

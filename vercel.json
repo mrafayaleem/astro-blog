@@ -1,6 +1,5 @@
 {
   "buildCommand": "bunx astro build",
-  "outputDirectory": "dist",
   "installCommand": "bun install",
   "framework": "astro"
 }

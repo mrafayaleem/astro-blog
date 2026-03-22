@@ -26,6 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
         email,
         reactivate_existing: false,
         send_welcome_email: true,
+        double_opt_in: true,
         utm_source: 'website',
         utm_medium: 'organic'
       })

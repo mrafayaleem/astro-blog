@@ -25,13 +25,17 @@ export const POST: APIRoute = async ({ request }) => {
       body: JSON.stringify({
         email,
         reactivate_existing: false,
-        send_welcome_email: true
+        send_welcome_email: true,
+        utm_source: 'website',
+        utm_medium: 'organic'
       })
     }
   )
 
   if (!res.ok) {
-    return new Response(JSON.stringify({ error: 'Subscription failed' }), { status: 500 })
+    const body = await res.json().catch(() => ({}))
+    console.error('Beehiiv error:', res.status, body)
+    return new Response(JSON.stringify({ error: 'Subscription failed', detail: body }), { status: 500 })
   }
 
   return new Response(JSON.stringify({ success: true }), { status: 200 })

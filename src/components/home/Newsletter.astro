@@ -17,7 +17,7 @@
     Subscribe
   </button>
 </form>
-<p id='newsletter-msg' class='not-prose mt-2 hidden text-sm'></p>
+<p id='newsletter-msg' class='not-prose mt-2 text-sm' style='display:none'></p>
 
 <script>
   const form = document.getElementById('newsletter-form') as HTMLFormElement
@@ -29,7 +29,7 @@
     e.preventDefault()
     btn.disabled = true
     btn.textContent = 'Subscribing...'
-    msg.className = 'not-prose mt-2 hidden text-sm'
+    msg.style.display = 'none'
 
     try {
       const res = await fetch('/api/subscribe', {
@@ -39,18 +39,21 @@
       })
 
       if (res.ok) {
-        form.classList.add('hidden')
+        form.style.display = 'none'
         msg.textContent = "You're subscribed! Check your inbox for a confirmation email."
-        msg.className = 'not-prose mt-2 text-sm text-green-600'
+        msg.style.display = 'block'
+        msg.style.color = 'oklch(0.527 0.154 150.069)'
       } else {
         msg.textContent = 'Something went wrong. Please try again.'
-        msg.className = 'not-prose mt-2 text-sm text-red-500'
+        msg.style.display = 'block'
+        msg.style.color = 'oklch(0.577 0.245 27.325)'
         btn.disabled = false
         btn.textContent = 'Subscribe'
       }
     } catch {
       msg.textContent = 'Something went wrong. Please try again.'
-      msg.className = 'not-prose mt-2 text-sm text-red-500'
+      msg.style.display = 'block'
+      msg.style.color = 'oklch(0.577 0.245 27.325)'
       btn.disabled = false
       btn.textContent = 'Subscribe'
     }

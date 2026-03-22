@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro'
 
-const PUBLICATION_ID = '6520ad1b-ab0f-4fcc-9288-be956f5eaaa4'
+const PUBLICATION_ID = 'pub_17310549-327b-438d-92b5-e0341e7920bd'
 
 export const POST: APIRoute = async ({ request }) => {
   const { email } = await request.json()

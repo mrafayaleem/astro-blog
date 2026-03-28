@@ -1,7 +1,7 @@
 ---
 title: Improving personal tax filing with Claude CLI and Obsidian
 description: An opinionated workflow showcasing how I used Claude and Obsidian together to help with my personal tax filing in Canada
-publishDate: 2026-03-25
+publishDate: 2026-03-28
 tags:
   - personal
   - productivity

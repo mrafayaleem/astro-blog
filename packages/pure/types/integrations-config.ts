@@ -22,7 +22,7 @@ export const IntegrationConfigSchema = () =>
       server: z.string(),
       /** target: string, but (data: unknown) => string */
       target: z.string()
-    }),
+    }).optional(),
 
     /** UnoCSS typography */
     typography: z.object({

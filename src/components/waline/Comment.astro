@@ -19,7 +19,7 @@ const { class: className } = Astro.props
 
 {
   enabled ? (
-    <div class={cn('not-prose', className)}>
+    <div id='giscus' class={cn('not-prose', className)}>
       <script
         src='https://giscus.app/client.js'
         data-repo={GISCUS_REPO}

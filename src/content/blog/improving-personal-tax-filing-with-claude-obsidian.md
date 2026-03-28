@@ -113,3 +113,5 @@ The tax filing software that I used (Wealthsimple Tax) allows you to generate a 
 I found Claude Code CLI much more convenient and flexible compared to the Claude desktop app. Combined with Obsidian and a terminal like [Ghostty](https://ghostty.org/), managing personal life stuff with Claude Code CLI becomes a breeze once you get the hang of it. Having used Notion MCP with the Claude desktop app as well, I would say Claude Code CLI + Obsidian is a step above, both in terms of speed and token usage — the main trade-off being that unlike Notion, you can't really take the Obsidian workflow with you on your phone (or perhaps you can with Claude Remote Control?).
 
 Overall, I was pretty happy with how this turned out. It did not replace my own judgement — I still reviewed every number and cross-checked the important bits — but it made the whole process a lot more organized and honestly less stressful.  If you manage taxes for more than just yourself, even a lightweight setup like this goes a long way. Give it a shot before the April deadline sneak up on you in Canada! 🍁
+
+Disclaimer: This is not a tax adivce.

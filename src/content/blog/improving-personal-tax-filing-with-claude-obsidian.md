@@ -25,6 +25,8 @@ I set up a working directory for my tax related documents and opened that as a v
 
 Obsidian also has excellent support for viewing PDFs which I found very useful for reviewing my tax forms without leaving the app.
 
+## Folder structure
+
 Here is a sample structure that I came up with:
 
 ```
@@ -69,11 +71,14 @@ obsidian_vault
 
 As you might have noticed, I also set up a virtual env with uv and installed the following libs to help Claude extract relevant information from PDFs along with a custom bash function for quick invocations.
 
-**Libs**
+## Python libraries and tools
+
+### Libs
 - `markitdown[all]` - an open source library from Microsoft to extract information in markdown format, excellent for LLMS since they work well with those.
 - `ocrmypdf`
 
-**Bash function**
+### Bash function
+
 ```bash
 pdf2md() {
   local input="$1"
@@ -88,6 +93,8 @@ pdf2md() {
   "$venv_ocrmypdf" --skip-text "$input" "$output" && "$venv_markitdown" "$output"
 }
 ```
+
+## Providing context to Claude Code CLI
 
 I used the `CLAUDE.md` file to seed the financial context such as where to find currency rates for ACB calculations, tax forms, RRSP receipts, etc. and asked Claude to update the `PLAN.md` for what I need to do next along with checklists to mark each step as completed once done. I cross checked all the ACB calculations and corrections that it made against an online ACB calculator to make sure it did not hallucinate on my tax filing, given that it was my first time.
 

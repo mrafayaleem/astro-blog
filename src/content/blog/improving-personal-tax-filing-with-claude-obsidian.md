@@ -54,7 +54,7 @@ obsidian_vault
 │   │       │   │   └── PayrollEarningStatementReport_MarchDec_2025.pdf
 │   │       │   ├── PLAN.md
 │   │       └── Rafay
-│   │           ├── EMAILS.md
+│   │           ├── ESPP.md
 │   │           ├── Charles Schwab Docs
 │   │           ├── CLAUDE.md
 │   │           ├── Contribution Receipts
@@ -69,7 +69,7 @@ obsidian_vault
 └── Welcome.md
 ```
 
-As you might have noticed, I also set up a virtual env with uv and installed the following libs to help Claude extract relevant information from PDFs along with a custom bash function for quick invocations.
+As you might have noticed, I also set up a Python virtual env with `uv` and installed the following libs to help Claude extract relevant information from PDFs along with a custom bash function for quick invocations by Claude.
 
 ## Python libraries and tools
 
@@ -99,15 +99,17 @@ pdf2md() {
 I used the `CLAUDE.md` file to seed the financial context such as where to find currency rates for ACB calculations, tax forms, RRSP receipts, etc. and asked Claude to update the `PLAN.md` for what I need to do next along with checklists to mark each step as completed once done. I cross checked all the ACB calculations and corrections that it made against an online ACB calculator to make sure it did not hallucinate on my tax filing, given that it was my first time.
 
 Where necessary, I generously seeded the context with the following:
-- `EMAILS.md` file that contained any relevant email text with information about my ESPP tax withholding, over-contribution, etc.
-	- This was particularly useful for cross checking ESPP payroll deduction, ESPP over-contribution amounts, etc. which can be a bit daunting to validate.
+- `ESPP.md` file that contained any relevant text with information about my ESPP tax withholding, over-contribution, etc.
+	- This was particularly useful for cross checking ESPP payroll deduction, ESPP over-contribution amounts, etc. which can be a bit daunting to re-visit and validate.
 - `taxation/Currency Rates` containing currency rates for the relevant years so that Claude can use them for ACB calculations. I pulled these from https://www.exchange-rates.org/
 - I also used a Chrome extension called [LLM Feeder](https://github.com/jatinkrmalik/LLMFeeder) to extract pages such as the Government of Canada's page on [Definitions for capital gains](https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/personal-income/line-12700-capital-gains/definitions-capital-gains.html). All such information was seeded through the `CLAUDE.md` files.
+
+With this setup, Claude was actually able to find issues with my wife's last year's ACB calculations where we mistakenly used the discounted purchase price instead of the FMV to report capital gains.
 
 The tax filing software that I used (Wealthsimple Tax) allows you to generate a draft T1 once you have input all the information. I used that along with `markitdown` and `ocrmypdf` to populate `FILED.md` and asked Claude Code CLI to audit all the information before I submitted the filing.
 
 ---
 
-I found Claude Code CLI much more convenient and flexible compared to the Claude desktop app. Combined with Obsidian and a terminal like [Ghostty](https://ghostty.org/), managing personal life stuff with Claude becomes a breeze once you get the hang of it. Having used Notion MCP with the Claude desktop app as well, I would say Claude Code CLI + Obsidian is a step above — the main trade-off being that unlike Notion, you can't really take the Obsidian workflow with you on your phone.
+I found Claude Code CLI much more convenient and flexible compared to the Claude desktop app. Combined with Obsidian and a terminal like [Ghostty](https://ghostty.org/), managing personal life stuff with Claude Code CLI becomes a breeze once you get the hang of it. Having used Notion MCP with the Claude desktop app as well, I would say Claude Code CLI + Obsidian is a step above, both in terms of speed and token usage — the main trade-off being that unlike Notion, you can't really take the Obsidian workflow with you on your phone (or perhaps you can with Claude Remote Control?).
 
 Overall, I was pretty happy with how this turned out. It did not replace my own judgement — I still reviewed every number and cross-checked the important bits — but it made the whole process a lot more organized and honestly less stressful.  If you manage taxes for more than just yourself, even a lightweight setup like this goes a long way. Give it a shot before the April deadline sneak up on you in Canada! 🍁

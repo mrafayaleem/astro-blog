@@ -1,6 +1,8 @@
 ---
 import { Footer, Header, ThemeProvider } from 'astro-pure/components/basic'
 import type { SiteMeta } from 'astro-pure/types'
+import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro'
 import BaseHead from '@/components/BaseHead.astro'
 import config from '@/site-config'
 
@@ -47,6 +49,8 @@ const {
       </div>
       <Footer />
     </div>
+    <Analytics />
+    <SpeedInsights />
 
     {/* Set highlight color */}
     <style define:vars={{ highlightColor }}>

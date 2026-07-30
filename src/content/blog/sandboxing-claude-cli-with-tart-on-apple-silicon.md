@@ -36,7 +36,7 @@ Resize the disk if needed (size in GB; do this while the VM is stopped):
 tart set ubuntu --disk-size 50
 ```
 
-Ubuntu cloud images auto-grow the root partition on next boot, so no manual `growpart`/`resize2fs` is needed — verify with `df -h /` inside the guest.
+These are Ubuntu cloud images (lightly customized by Cirrus Labs) that auto-grow the root partition on next boot, so no manual `growpart`/`resize2fs` is needed — verify with `df -h /` inside the guest.
 ## 1. Start the VM with the directory share
 ```bash
 tart run --dir=obsidian_vault:/Users/rafaypersonal/Documents/obsidian_vault ubuntu &
@@ -97,9 +97,9 @@ If you are working as developer, you can also access VM ports from the host via 
 ssh -f -N -L 8080:localhost:8080 -L 3000:localhost:3000 admin@$(tart ip ubuntu)
 ```
 ## Conclusion
-Cirrus Labs, the company behind Tart is now part of OpenAI so I am assuming the ChatGPT/Codex Desktop apps also use Tart for sandboxing (although I doubt the CLI does).
+Cirrus Labs, the company behind Tart is now part of OpenAI so I am assuming the ChatGPT/Codex Desktop apps also use Tart for sandboxing.
 
-However, I have found fully sandboxed environments for CLI very liberating, alleviating my security concerns of bricking my host machines. Having it as a lightweight self-contained native and reproducible headless VM for development workflows has been amazing!
+However, I have found self-maintained fully sandboxed environments for CLI very liberating, alleviating my security concerns of bricking my host machines while providing great persistence. Having it as a lightweight self-contained native and reproducible headless VM for development workflows is quite refreshing here!
 
 Arguably, this workflow is more ergonomic than Docker for iterative dev work because the VM's disk persists like a normal machine, so you just install things and move on without thinking about image layers, committing containers, or rebuilding to make changes stick.
 

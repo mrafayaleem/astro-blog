@@ -1,5 +1,5 @@
 ---
-title: Supercharging Claude CLI with Tart Virtualization on Apple Silicon
+title: Sandboxing Claude CLI with Tart on Apple Silicon
 description: My take on sandboxing Claude CLI and other harnesses on Apple devices without headaches
 publishDate: 2026-06-19
 tags:

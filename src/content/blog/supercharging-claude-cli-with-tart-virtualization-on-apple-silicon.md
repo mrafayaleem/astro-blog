@@ -90,7 +90,7 @@ mount | grep virtiofs      # confirm the mount is active
 
 `nofail` matters: without it, booting the VM *without* the `--dir` flag would hang or drop to emergency mode when the device is missing.
 
-**And that's it!** You can now install and run Claude and other harnesses in the VM with the `--dangerously-skip-permissions` and feel less uncomfortable about bricking your system.
+**And that's it!** You can now install and run Claude and other harnesses in the VM with the `--dangerously-skip-permissions` and feel less uncomfortable about bricking your system. But note that the data you have shared with the VM is not protected, only the host is. You can always use a `:ro` flag as a mitigation if you want to prevent writes to your mounted paths.
 
 If you are working as developer, you can also access VM ports from the host via localhost  by simply SSH local forwarding.
 ```bash
@@ -101,5 +101,5 @@ Cirrus Labs, the company behind Tart is now part of OpenAI so I am assuming the 
 
 However, I have found fully sandboxed environments for CLI very liberating, alleviating my security concerns of bricking my host machines. Having it as a lightweight self-contained native and reproducible headless VM for development workflows has been amazing!
 
-Arguably, this workflow is better than Docker containers because of persistence where you will have to map your system directories to named volumes to survive restarts.
+Arguably, this workflow is more ergonomic than Docker for iterative dev work because the VM's disk persists like a normal machine, so you just install things and move on without thinking about image layers, committing containers, or rebuilding to make changes stick.
 
